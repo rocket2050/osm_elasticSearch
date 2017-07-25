@@ -20,7 +20,7 @@
 #
 # Use a descriptive name for the node:
 #
-  node.name: "{{ node_name }}"
+  node.name: {{ node_name }}
   node.client: false
   node.master: true
   node.data: true
@@ -55,11 +55,11 @@
 #
 # Set the bind address to a specific IP (IPv4 or IPv6):
 #
-  network.host: "{{ elasticsearch_network_host }}"
+  network.host: {{ elasticsearch_network_host }}
 #
 # Set a custom port for HTTP:
 #
-  http.port: "{{ elasticsearch_http_port }}"
+  http.port: {{ elasticsearch_http_port }}
 #
 # For more information, see the documentation at:
 # <http://www.elastic.co/guide/en/elasticsearch/reference/current/modules-network.html>
@@ -97,6 +97,6 @@
 #
 # action.destructive_requires_name: true
 
-  script.inline: "{{ elasticsearch_script_inline }}"
-  script.indexed: "{{ elasticsearch_script_indexed }}"
+  script.inline: {{ elasticsearch_script_inline }}
+  script.indexed: {{ elasticsearch_script_indexed }}
 
