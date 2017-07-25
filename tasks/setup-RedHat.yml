@@ -31,3 +31,8 @@
 
 - name: Install Elasticsearch.
   yum: pkg=elasticsearch state=installed
+  
+- systemd:
+    state: restarted
+    daemon_reload: yes
+    name: elasticsearch
