@@ -2,5 +2,5 @@
 - hosts: "{{ hosts }}"
 
   roles:
-    - role: ElasticSearch_role
+    - role: elasticsearch
 
