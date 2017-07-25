@@ -52,6 +52,14 @@
     owner: root
     group: elasticsearch
     mode: 0640
+ 
+- name: Copy jvm.option file to /etc
+  template:
+    src: "{{ jvm_options }}"
+    dest: /etc/elasticsearch/jvm.options
+    owner: root
+    group: elasticsearch
+    mode: 0640
 
 - name: Start Elasticsearch.
   service: name=elasticsearch state=started enabled=yes
