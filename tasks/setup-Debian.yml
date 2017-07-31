@@ -42,9 +42,14 @@
 
 - name: Add Elasticsearch repository.
   apt_repository:
-    repo: 'deb http://packages.elastic.co/elasticsearch/5.x/debian stable main'
+    repo: 'deb https://artifacts.elastic.co/packages/5.x/apt stable main'
     state: present
-
+  become: true
+  
+- name: add this to source list
+  shell: "tee -a /etc/apt/sources.list.d/elastic-5.x.list"
+  become: true
+  
 - name: update cache for Elastic search to be installed
   apt:
     update_cache: yes
