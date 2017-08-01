@@ -21,29 +21,29 @@
     group: elasticsearch
     mode: 0640
 
-- name: Copy Limits.conf file
-  template:
-    src: "{{ limits }}"
-    dest: /etc/security/limits.conf 
-    owner: root
-    group: elasticsearch
-    mode: 0640
+#- name: Copy Limits.conf file
+#  template:
+#    src: "{{ limits }}"
+#    dest: /etc/security/limits.conf 
+#    owner: root
+#    group: elasticsearch
+#   mode: 0640
 
-- name: Copy Common-Session File to Pam.d
-  template:
-    src: "{{ common_session }}"
-    dest: /etc/pam.d/common-session
-    owner: root
-    group: elasticsearch
-    mode: 0640
+#- name: Copy Common-Session File to Pam.d
+#  template:
+#    src: "{{ common_session }}"
+#    dest: /etc/pam.d/common-session
+#    owner: root
+#    group: elasticsearch
+#    mode: 0640
 
-- name: Copy common-session-noninteractive file to pam.d
-  template:
-    src: "{{ common_session_ni }}"
-    dest: /etc/pam.d/common-session-noninteractive
-    owner: root
-    group: elasticsearch
-    mode: 0640
+#- name: Copy common-session-noninteractive file to pam.d
+#  template:
+#    src: "{{ common_session_ni }}"
+#    dest: /etc/pam.d/common-session-noninteractive
+#    owner: root
+#    group: elasticsearch
+#   mode: 0640
 
 - name: Copy Environment file to /etc
   template:
@@ -53,16 +53,16 @@
     group: elasticsearch
     mode: 0640
  
-- name: Copy jvm.option file to /etc
-  template:
-    src: "{{ jvm_options }}"
-    dest: /etc/elasticsearch/jvm.options
-    owner: root
-    group: elasticsearch
-    mode: 0640
+#- name: Copy jvm.option file to /etc
+#  template:
+#    src: "{{ jvm_options }}"
+#    dest: /etc/elasticsearch/jvm.options
+#    owner: root
+#    group: elasticsearch
+#    mode: 0640
 
 - name: Start Elasticsearch.
   service: name=elasticsearch state=started enabled=yes
 
-- name: Make sure Elasticsearch is running before proceeding.
-  wait_for: host={{ elasticsearch_network_host }} port={{ elasticsearch_http_port }} delay=3 timeout=300
+#- name: Make sure Elasticsearch is running before proceeding.
+#  wait_for: host={{ elasticsearch_network_host }} port={{ elasticsearch_http_port }} delay=3 timeout=300
