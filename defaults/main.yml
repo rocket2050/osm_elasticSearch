@@ -10,10 +10,7 @@ common_session_ni: common-session-noninteractive.j2
 elasticsearch: elasticsearch.yml.j2
 environment: environment.j2
 limits: limits.conf.j2
-cluster_name: production
 node_name: ${HOSTNAME}
-path_to_data:
-path_to_logs:
 elasticsearch_network_host: localhost
 elasticsearch_http_port: 9200
 elasticsearch_script_inline: true
@@ -30,3 +27,46 @@ oracle_java_cache_valid_time: 3600
 oracle_java_home: "/usr/lib/jvm/java-{{ oracle_java_version }}-oracle"
 oracle_java_os_supported: yes
 oracle_java_state: latest
+elasticsearch_cluster_username: elasticsearch
+elasticsearch_cluster_groupname: elasticsearch
+
+elasticsearch_dir: /usr/local/elasticsearch
+
+#elasticsearch_cluster_name : elasticsearch-cluster-name
+
+#elasticsearch_cluster_node:
+#  rack : r1
+#  name: node-name-qwert
+
+elasticsearch_cluster_network:
+  host: '127.0.0.1'
+
+elasticsearch_cluster_http:
+  port : 9200
+
+elasticsearch_cluster_gateway:
+  recover_after_nodes: 3
+  
+elasticsearch_cluster_paths:
+  data: /var/log/elasticsearch
+  logs: /var/lib/elasticsearch
+
+elasticsearch_cluster_hosts:
+  ty: static
+  hosts:
+    - localhost
+
+# also supports finding the hosts from a group/inventory
+#elasticsearch_cluster_hosts:
+#  ty: group
+#  group: elasticsearch
+
+elasticsearch_cluster_activate: True
+elasticsearch_cluster_supervisor: systemd
+
+# vars file for elasticsearch-cluster
+elasticsearch_cluster_config_dir: '{{elasticsearch_dir}}/config'
+
+elasticsearch_cluster_host_list: '{% if elasticsearch_cluster_hosts.ty == "static" %}{{ elasticsearch_cluster_hosts.hosts }}{% else %}{{ groups[elasticsearch_cluster_hosts.group|default("elasticsearch")] }}{% endif %}'
+
+elasticsearch_cluster_quorum: '{{ (elasticsearch_cluster_host_list|length / 2)|int + 1 }}'
