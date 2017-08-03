@@ -1,10 +1,12 @@
 ---
 
+# Create a temporary storage folder to download Java package
 - name: Create Temporary Storage Folder
   file:
     path: "{{ java_tmp_storage }}"
     state: directory
 
+# Donload Oracle Java RPM PACKAGE
 - name: Download Oracle Java RPM
   get_url:
     url: "{{ __java_oracle_download }}"
@@ -12,11 +14,13 @@
     dest: "{{ java_tmp_storage }}/{{ __java_oracle_rpm }}.rpm"
 #    checksum: "{{ __java_oracle_download_checksum }}"
 
+# Install Oracle JAVA
 - name: Install Oracle Java
   package:
     name: "{{ java_tmp_storage }}/{{ __java_oracle_rpm }}.rpm"
     state: installed
     validate_certs: False
+
 
 - name: Add Elasticsearch GPG key.
   rpm_key:
