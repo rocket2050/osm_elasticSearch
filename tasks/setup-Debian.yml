@@ -41,6 +41,7 @@
     src: "{{ environment_template }}"
     dest: /etc/environment
   become: true
+  tags: Environment_file
 
 #- name: download elastic search for standalone
 #  become: true

@@ -1,11 +1,11 @@
 # Getting all the hostnames
 
-{% macro discover_hostname() -%}
-{% for host in groups[nodes] -%}
+{% macro discover_hostname() %}
+{% for host in groups['nodes_group'] %}
    {{ hostvars[host].ansible_hostname }}
-  {%- if not loop.last -%},{%- endif -%}
-  {%- endfor -%}
-  {% endmacro -%}
+  {% if not loop.last -%},{%- endif %}
+{% endfor %}
+{% endmacro %}
 # ======================== Elasticsearch Configuration =========================
 #
 # NOTE: Elasticsearch comes with reasonable defaults for most settings.
@@ -74,7 +74,7 @@ http.port: 9200
 # Pass an initial list of hosts to perform discovery when new node is started:
 # The default list of hosts is ["127.0.0.1", "[::1]"]
 #
-discovery.zen.ping.unicast.hosts: "{{ discover_hostname() }}"
+discovery.zen.ping.unicast.hosts: {{ discover_hostname() }}
 #
 # Prevent the "split brain" by configuring the majority of nodes (total number of nodes / 2 + 1):
 #

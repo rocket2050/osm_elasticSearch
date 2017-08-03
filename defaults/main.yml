@@ -1,6 +1,6 @@
 ---
 
-java_tmp_storage: /tmp/java_install
+java_tmp_storage: /tmp/java
 __java_oracle_rpm: java8u131
 __java_oracle_download: http://download.oracle.com/otn-pub/java/jdk/8u131-b11/d54c1d3a095b4ff2b6607d096fa80163/jdk-8u131-linux-x64.rpm
 
@@ -19,7 +19,7 @@ network_host: '{{ ansible_eth1["ipv4"]["address"] }}'
 http_port: 9200
 elasticsearch_script_inline: true
 elasticsearch_script_indexed: true
-
+nodes_group: nodes
 oracle_java_dir_source: '/usr/local/src'
 oracle_java_set_as_default: yes
 oracle_java_version: "8"
