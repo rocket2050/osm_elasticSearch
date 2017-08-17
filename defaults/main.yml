@@ -19,7 +19,7 @@ network_host: '{{ ansible_eth1["ipv4"]["address"] }}'
 http_port: 9200
 elasticsearch_script_inline: true
 elasticsearch_script_indexed: true
-nodes_group: nodes
+#nodes_group: nodes
 oracle_java_dir_source: '/usr/local/src'
 oracle_java_set_as_default: yes
 oracle_java_version: "8"
