@@ -75,7 +75,7 @@ http.port: 9200
 # Pass an initial list of hosts to perform discovery when new node is started:
 # The default list of hosts is ["127.0.0.1", "[::1]"]
 #
-discovery.zen.ping.unicast.hosts: [ {% for host in groups['nodes'] %} "{{host}}", {% endfor %} ]
+discovery.zen.ping.unicast.hosts: [ {% for host in groups['hosts'] %} "{{host}}", {% endfor %} ]
 #
 # Prevent the "split brain" by configuring the majority of nodes (total number of nodes / 2 + 1):
 #
