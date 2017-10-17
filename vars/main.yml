@@ -1,0 +1,15 @@
+---
+#In node_name we define name of the node
+node_name: mynode
+
+#In cluster_name we define name of the cluster
+cluster_name: mycluster
+
+#No. of shards
+value_shards: 1
+
+#No. of replicas
+value_replicas: 0
+
+#Network bind host entry for allowing hosts, set it 0.0.0.0 for allowing all ip ranges
+network_host: 0.0.0.0

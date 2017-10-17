@@ -1,0 +1,24 @@
+---
+
+- name: To download  elasticsearch
+  get_url:
+    url: https://download.elastic.co/elasticsearch/release/org/elasticsearch/distribution/deb/elasticsearch/2.3.1/elasticsearch-2.3.1.deb
+    dest: /root/
+
+- name: To install elasticsearch
+  apt:
+    deb: /root/elasticsearch-2.3.1.deb
+    state: present
+  notify:
+    - start_elastic
+    
+- name: To Configure elastic
+  template:
+    src: elasticsearch.yml.j2
+    dest: /etc/elasticsearch/elasticsearch.yml
+  tags:
+    - els
+    
+- name: To start elasticsearch
+  service: name=elasticsearch state=restarted
+

@@ -1,0 +1,12 @@
+---
+
+- name: To install elasticsearch on RedHat or CentOS
+  include: setup-RedHat.yml
+  when:
+    ansible_os_family == 'RedHat'
+    
+- name: To install elasticsearch on Debian
+  include: setup-Debian.yml
+  when:
+    ansible_os_family == 'Debian'
+

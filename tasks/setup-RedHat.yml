@@ -1,0 +1,20 @@
+---
+
+- name: To download and install elasticsearch
+  yum:
+    name: https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-1.7.3.noarch.rpm
+    state: present
+
+- name: To start and enable elasticsearch
+  service:
+    name: elasticsearch
+    state: started
+    enabled: true
+    
+- name: To Configure Elastic
+  template:
+    src: elasticsearch.yml.j2
+    dest: /etc/elasticsearch/elasticsearch.yml
+    
+    
+    
