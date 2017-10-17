@@ -1,46 +1,46 @@
 ---
 # Setup Java on System
-- name: determine if Java is already installed
-  shell: which java
-  register: oracle_java_task_installed
-  changed_when: oracle_java_task_installed.rc != 0
-  failed_when: no
+#- name: determine if Java is already installed
+#  shell: which java
+#  register: oracle_java_task_installed
+#  changed_when: oracle_java_task_installed.rc != 0
+#  failed_when: no
 
 # Setup Debian Java PPA Repo
-- name: debian | ubuntu | add java ppa repo
-  apt_repository:
-    repo='ppa:webupd8team/java'
-    state=present
+#- name: debian | ubuntu | add java ppa repo
+#  apt_repository:
+#    repo='ppa:webupd8team/java'
+#    state=present
 
 # Update Apt Package
-- name: Update and upgrade apt packages
-  become: true
-  apt:
-    update_cache: yes
-    cache_valid_time: 86400 #One day
+#- name: Update and upgrade apt packages
+#  become: true
+#  apt:
+#    update_cache: yes
+ #   cache_valid_time: 86400 #One day
 
 # Accept the Oracle Java License
-- name: auto accept oracle jdk license
-  shell: echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections
-  sudo: yes
+#- name: auto accept oracle jdk license
+#  shell: echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections
+#  sudo: yes
 
 # Install Oracle Java 8 onto the server
-- name: ensure Java is installed
-  become: true
-  apt: name=oracle-java8-installer state=present force=yes
+#- name: ensure Java is installed
+#  become: true
+#  apt: name=oracle-java8-installer state=present force=yes
 
 # Set a version of java as default
-- name: set Java version as default
-  apt:
-    name="oracle-java{{ oracle_java_version }}-set-default"
+#- name: set Java version as default
+#  apt:
+ #   name="oracle-java{{ oracle_java_version }}-set-default"
 
 
 # Copy Environment file with JAVA_HOME
-- name: Copy the Environment file
-  template:
-    src: "{{ environment_template }}"
-    dest: /etc/environment
-  become: true
+#- name: Copy the Environment file
+#  template:
+#    src: "{{ environment_template }}"
+#    dest: /etc/environment
+#  become: true
 
 #- name: download elastic search for standalone
 #  become: true
