@@ -1,5 +1,5 @@
 ---
-- hosts: db
+- hosts: "{{ hosts }}"
   become: yes
   roles:
     - elasticsearch
