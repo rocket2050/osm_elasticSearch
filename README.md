@@ -6,7 +6,7 @@ osm_elasticSearch
 
 # Variables/Default for elasticsearch
 
- This role was built using [Default_Variables](https://github.com/opstree-ansible/osm_elasticSearch/blob/master/defaults/main.yml).
+ This role was built using [Variables](https://github.com/opstree-ansible/osm_elasticSearch/blob/release-1.0/vars/main.yml).
 
 # Example Playbook
 
