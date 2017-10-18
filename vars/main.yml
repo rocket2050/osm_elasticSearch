@@ -13,3 +13,4 @@ value_replicas: 0
 
 #Network bind host entry for allowing hosts, set it 0.0.0.0 for allowing all ip ranges
 network_host: 0.0.0.0
+
