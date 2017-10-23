@@ -107,12 +107,12 @@ node.name: "{{ node_name }}"
 # Set the number of shards (splits) of an index (5 by default):
 #
 #index.number_of_shards: 5
-index.number_of_shards: {{ value_shards }}
+#index.number_of_shards: {{ value_shards }}
 
 # Set the number of replicas (additional copies) of an index (1 by default):
 #
 #index.number_of_replicas: 1
-index.number_of_replicas: {{ value_replicas }}
+#index.number_of_replicas: {{ value_replicas }}
 
 # Note, that for development on a local machine, with small indices, it usually
 # makes sense to "disable" the distributed features:
@@ -205,7 +205,7 @@ index.number_of_replicas: {{ value_replicas }}
 # Set the bind address specifically (IPv4 or IPv6):
 #
 #network.bind_host: 192.168.0.1
-network.bind_host: {{ network_host }}
+#network.bind_host: {{ network_host }}
 
 # Set the address other nodes will use to communicate with this node. If not
 # set, it is automatically derived. It must point to an actual IP address.

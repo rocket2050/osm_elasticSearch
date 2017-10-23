@@ -1,21 +1,28 @@
 ---
 
-- name: To download and install elasticsearch
+- name: To download elasticsearch
+  get_url:
+    url: https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.6.3.rpm
+    dest: /root/
+    
+- name: To install elasticsearch
   yum:
-    name: https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-1.7.3.noarch.rpm
+    name: /root/elasticsearch-5.6.3.rpm
     state: present
-
-- name: To start and enable elasticsearch
-  service:
-    name: elasticsearch
-    state: started
-    enabled: true
     
 - name: To Configure Elastic
   template:
-    src: elasticsearch.yml.j2
+    src: elasticsearch.yml.Rhel.j2
     dest: /etc/elasticsearch/elasticsearch.yml
-    
-    
-    
 
+- name: To set memory for Java Options
+  template:
+    src: jvm.options.j2
+    dest: /etc/elasticsearch/jvm.options
+    
+- name: To start and enable elasticsearch
+  service:
+    name: elasticsearch
+    state: restarted
+    enabled: true    
+    

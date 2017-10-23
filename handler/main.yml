@@ -2,4 +2,3 @@
 
 - name: start_elastic
   service: name=elasticsearch state=restarted 
-  
