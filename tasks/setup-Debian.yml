@@ -28,3 +28,4 @@
 - name: To start elasticsearch
   service: name=elasticsearch state=restarted
 
+
