@@ -1,5 +1,5 @@
 ---
-- hosts: "{{ host }}"
+- hosts: all
 
   roles:
     - role: /var/lib/awx/projects/_11__osm_elasticsearch
