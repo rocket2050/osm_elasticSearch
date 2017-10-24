@@ -1,5 +1,5 @@
 ---
-- hosts: {{ hosts }}
+- hosts: all
   become: yes
   roles:
-    - elasticsearch
+    - /var/lib/awx/projects/_11__osm_elasticsearch
