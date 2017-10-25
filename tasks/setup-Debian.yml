@@ -2,12 +2,12 @@
 
 - name: To download  elasticsearch
   get_url:
-    url: https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.5.1.deb
+    url: https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.6.3.deb
     dest: /root/
 
 - name: To install elasticsearch
   apt:
-    deb: /root/elasticsearch-5.5.1.deb
+    deb: /root/elasticsearch-5.6.3.deb
     state: present
     
 - name: update the defaults
